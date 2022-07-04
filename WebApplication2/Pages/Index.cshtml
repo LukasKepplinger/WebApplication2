@@ -1,0 +1,34 @@
+﻿@page
+@model IndexModel
+
+
+<form method="post">
+    <div class="form-gropup">
+        <label class="control-label" asp-for="Person.FirstName"></label>
+        <input class="form-control" asp-for="Person.FirstName" />
+        <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-gropup">
+        <label class="control-label" asp-for="Person.LastName"></label>
+        <input class="form-control" asp-for="Person.LastName" />
+        <span asp-validation-for="Person.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-gropup">
+        <input class="btn btn-primary" type="submit" />
+    </div>
+</form>
+
+
+<table class="table table-dark table-hover mt-5">
+    @foreach (var person in Model.Persons)
+    {
+        <tr>
+            <td>
+                @person.FirstName
+            </td>
+            <td>
+                @person.LastName
+            </td>
+        </tr>
+    }
+</table>
