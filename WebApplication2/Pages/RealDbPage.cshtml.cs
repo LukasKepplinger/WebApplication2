@@ -29,8 +29,13 @@ namespace WebApplication2.Pages
             {
                 Context.Persons.Add(Person);
                 Context.SaveChanges();
+                return RedirectToAction("RealDbPage");
             }
-            return RedirectToAction("RealDbPage");
+            else
+            {
+                return Page();
+            }
+            
         }
     }
 }

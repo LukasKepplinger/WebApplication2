@@ -28,8 +28,12 @@ namespace WebApplication2.Pages
             if(ModelState.IsValid)
             {
                 PersonsDb.Add(Person);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return Page();
+            }
         }
     }
 }
