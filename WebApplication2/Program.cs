@@ -1,10 +1,15 @@
+using Microsoft.EntityFrameworkCore;
 using WebApplication2;
+using WebApplication2.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
 builder.Services.AddSingleton<FakePersonsDb>();
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
 var app = builder.Build();
 
