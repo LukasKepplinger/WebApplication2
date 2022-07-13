@@ -20,4 +20,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebApplication2.Data\WebApplication2.Data.csproj" />
+    <ProjectReference Include="..\WebApplication2.Models\WebApplication2.Models.csproj" />
+  </ItemGroup>
+
 </Project>

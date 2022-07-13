@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApplication2.Data;
+using WebApplication2.Models;
 
 namespace WebApplication2.Pages
 {

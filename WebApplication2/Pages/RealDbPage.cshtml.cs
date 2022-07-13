@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplication2.Data;
+using WebApplication2.Data.IRepositories;
+using WebApplication2.Models;
 
 namespace WebApplication2.Pages
 {
@@ -11,24 +13,26 @@ namespace WebApplication2.Pages
         [BindProperty]
         public List<Person> Persons { get; set; }
 
-        public RealDbPageModel(MyDbContext context)
+
+        // Instead of injecting the DbContext directly we will use the repo instead
+        // We inject the the Interface so we get the implementation we have chosen in the Program.cs
+        public IPersonRepo PersonRepo { get; }
+        public RealDbPageModel(IPersonRepo personRepo) 
         {
-            Context = context;
+            PersonRepo = personRepo;
         }
 
-        public MyDbContext Context { get; }
 
-        public void OnGet()
+        public async void OnGet()
         {
-            Persons = Context.Persons.ToList();
+            Persons = await PersonRepo.GetAll();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
-                Context.Persons.Add(Person);
-                Context.SaveChanges();
+                await PersonRepo.Insert(Person);
                 return RedirectToAction("RealDbPage");
             }
             else

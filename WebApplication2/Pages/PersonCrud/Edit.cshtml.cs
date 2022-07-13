@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2;
 using WebApplication2.Data;
+using WebApplication2.Models;
 
 namespace WebApplication2.Pages.PersonCrud
 {
