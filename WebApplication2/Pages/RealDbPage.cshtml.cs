@@ -19,6 +19,7 @@ namespace WebApplication2.Pages
         public IPersonRepo PersonRepo { get; }
         public RealDbPageModel(IPersonRepo personRepo) 
         {
+            Persons = new List<Person>();
             PersonRepo = personRepo;
         }
 
