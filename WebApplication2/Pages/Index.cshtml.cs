@@ -5,35 +5,28 @@ namespace WebApplication2.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
 
-        [BindProperty]
-        public Person Person { get; set; }
-        [BindProperty]
+        public string Title { get; set; }
         public List<Person> Persons { get; set; }
-        public FakePersonsDb PersonsDb { get; }
 
-        public IndexModel(FakePersonsDb personsDb)
-        {
-            Persons = new List<Person>();
-            PersonsDb = personsDb;
-        }
 
         public void OnGet()
         {
-            Persons = PersonsDb.GetAll();
-        }
-        public IActionResult OnPost()
-        {
-            if(ModelState.IsValid)
+            Title = "Hello World!";
+            Persons = new List<Person>()
             {
-                PersonsDb.Add(Person);
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return Page();
-            }
+                new Person()
+                {
+                    FirstName = "Max", 
+                    LastName = "Mustermann"
+                },
+                new Person()
+                {
+                    FirstName = "Hermann",
+                    LastName = "Gruber"
+                }
+            };
         }
+
     }
 }

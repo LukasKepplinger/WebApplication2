@@ -1,37 +1,15 @@
 ﻿@page
 @model IndexModel
 
-<h1>Fake</h1>
-<p class="mb-0">The Persons u send are saved in a List in a Singleton service</p>
-<p>If the Server is restarted the List is cleared again</p>
+<h1>@Model.Title</h1>
 
-<form method="post">
-    <div class="form-gropup">
-        <label class="control-label" asp-for="Person.FirstName"></label>
-        <input class="form-control" asp-for="Person.FirstName" />
-        <span asp-validation-for="Person.FirstName" class="text-danger"></span>
-    </div>
-    <div class="form-gropup">
-        <label class="control-label" asp-for="Person.LastName"></label>
-        <input class="form-control" asp-for="Person.LastName" />
-        <span asp-validation-for="Person.LastName" class="text-danger"></span>
-    </div>
-    <div class="form-gropup">
-        <input class="btn btn-primary" type="submit" />
-    </div>
-</form>
+<p class="mt-4 mb-1">The People defined in the Getter:</p> 
+
+@foreach (var person in @Model.Persons)
+{
+    <p class="mb-0 mt-0">@person.FirstName @person.LastName</p>
+}
 
 
-<table class="table table-dark table-hover mt-5">
-    @foreach (var person in Model.Persons)
-    {
-        <tr>
-            <td>
-                @person.FirstName
-            </td>
-            <td>
-                @person.LastName
-            </td>
-        </tr>
-    }
-</table>
+
+@*class="mt-1 mb-1" is not nessecary it just changes tha margin to top and bottom*@
