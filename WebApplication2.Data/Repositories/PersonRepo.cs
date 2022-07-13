@@ -27,7 +27,7 @@ namespace WebApplication2.Data.Repositories
 
         public async Task<List<Person>> GetAll()
         {
-            return await Context.Persons.ToListAsync();
+            return Context.Persons.ToList();
         }
 
         public async Task<List<Person>> GetAllByFirstName(string name)
