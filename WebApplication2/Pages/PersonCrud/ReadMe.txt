@@ -1,0 +1,1 @@
+﻿Cruds use the DbContext directly, so u have to replace the Context to PersonRepo manually
